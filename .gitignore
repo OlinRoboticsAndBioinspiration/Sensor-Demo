@@ -1,0 +1,6 @@
+Demo
+*.make
+_ogre_debug.txt
+Ogre.log
+obj/
+*.pyc
