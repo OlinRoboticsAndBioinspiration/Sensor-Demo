@@ -92,8 +92,11 @@ class DynaRoach():
         elif cmd.DATA_STREAMING:
             datum = list(unpack('<L3f3h2HB4H', data))
             degrees = np.degrees(datum[1:4])
+            print degrees
+            accel = datum[5:8]
             fi = open("sensors.txt", 'w')
             output = str(degrees[0])+", "+str(degrees[1])+", "+str(degrees[2]);
+            output += ", "+str(accel[0])+", "+str(accel[1])+", "+str(accel[2]);
             fi.write(output)
 
     def echo(self):
