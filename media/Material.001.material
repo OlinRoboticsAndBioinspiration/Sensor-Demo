@@ -1,16 +1,16 @@
-// Material.002 genrated by blender2ogre 0.5.8
+// Material.001 genrated by blender2ogre 0.5.8
 
-material Material.002 
+material Material.001 
 {
     receive_shadows on 
 
     technique
     {
-        pass Material.002
+        pass Material.001
         {
-            ambient 0.029097501188516617 0.029097501188516617 0.029097501188516617 1.0
-            diffuse 0.023278001297682538 0.023278001297682538 0.023278001297682538 1.0
-            specular 0.0 0.0 0.0 1.0 12.5
+            ambient 0.06085052713751793 0.0 0.800000011920929 1.0
+            diffuse 0.048680422435409154 0.0 0.6400000190734865 1.0
+            specular 0.45348837971687317 0.45348837971687317 0.45348837971687317 1.0 12.5
             emissive 0.0 0.0 0.0 1.0
 
             alpha_to_coverage off

@@ -29,7 +29,8 @@ void DemoApplication::createScene(void)
     mSceneMgr->setAmbientLight(Ogre::ColourValue(0.5f, 0.5f, 0.5f));
 
     // Create an Entity
-    Ogre::Entity* bodyEntity = mSceneMgr->createEntity("Head", "Cube.mesh");
+    Ogre::Entity* bodyEntity = mSceneMgr->createEntity("Head", "robot.mesh");
+
 
     // Create a SceneNode and attach the Entity to it
     bodyNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode");
@@ -58,12 +59,11 @@ bool DemoApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
     rot_x = x;
     rot_y = y;
     rot_z = z;
-    bodyNode->pitch(zr);
-    bodyNode->yaw(xr); //top down rotaiton
-    bodyNode->roll(-yr);
+
+    bodyNode->yaw(xr/4);
+    bodyNode->pitch(yr/4); //top down rotaiton
+    bodyNode->roll(zr/4);
   }
-
-
   return BaseApplication::frameRenderingQueued(evt);
 }
 
