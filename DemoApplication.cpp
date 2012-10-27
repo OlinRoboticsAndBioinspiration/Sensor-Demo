@@ -1,5 +1,6 @@
 #include "DemoApplication.h"
 #include <fstream>
+#include <iostream>
 #include <string>
 
 DemoApplication::DemoApplication(void)
@@ -20,7 +21,41 @@ bool DemoApplication::keyPressed( const OIS::KeyEvent &arg )
   {
     resetOrientation();
   }
+
+  int motorOld = motorSpeed;
+  if (arg.key == OIS::KC_0)
+  {
+    motorSpeed = 0;
+  }
+  if (arg.key == OIS::KC_1 ) {
+    motorSpeed = 10;
+  }
+  if (arg.key == OIS::KC_2 ) {
+    motorSpeed = 15;
+  }
+  if (arg.key == OIS::KC_3 ) {
+    motorSpeed = 20;
+  }
+  if (arg.key == OIS::KC_4 ) {
+    motorSpeed = 25;
+  }
+  if (arg.key == OIS::KC_5 ) {
+    motorSpeed = 30;
+  }
+  if (motorSpeed != motorOld) {
+    std::ofstream myfile;
+    myfile.open ("out.txt");
+    myfile << motorSpeed;
+    printf("Motorspeed changed, %d \n", motorSpeed);
+    myfile.close();
+  }
   return BaseApplication::keyPressed(arg);
+}
+
+bool DemoApplication::keyReleased( const OIS::KeyEvent &arg )
+{
+  oldIssued = false;
+  return BaseApplication::keyReleased(arg);
 }
 
 void DemoApplication::createScene(void)
@@ -60,9 +95,9 @@ bool DemoApplication::frameRenderingQueued(const Ogre::FrameEvent& evt)
     rot_y = y;
     rot_z = z;
 
-    bodyNode->yaw(xr/4);
-    bodyNode->pitch(yr/4); //top down rotaiton
-    bodyNode->roll(zr/4);
+    bodyNode->yaw(xr/2);
+    bodyNode->pitch(yr/2); //top down rotaiton
+    bodyNode->roll(zr/2);
   }
   return BaseApplication::frameRenderingQueued(evt);
 }
